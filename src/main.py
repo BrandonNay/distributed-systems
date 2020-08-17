@@ -11,14 +11,14 @@ class Node:
         self.comm = MPI.COMM_WORLD
         self.rank = self.comm.Get_rank()
         self.yeet = self.comm.size % (self.rank + 1)
-    
+
     def report(self):
-        print(f"HOST:{platform.node()} | S:{self.comm.size} | R:{self.rank} | Y:{self.yeet}")
+        print(f"HOST:{platform.node()} | R:{self.rank}")
 
     def send_receive(self):
         self.state = self.State(f"we da {self.rank} muzikj")
         self.states = self.comm.gather(self.state, root=0)
-        
+
         print(self.states)
 
 
