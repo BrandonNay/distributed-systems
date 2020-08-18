@@ -17,6 +17,7 @@ class Node:
         self.yeet = self.comm.size % (self.rank + 1)
 
         if self.rank == 0:
+            self.field = None
             self.build_environment()
         if self.rank == 1:
             self.spawn_population("*", (20, 5))
@@ -52,13 +53,13 @@ class Node:
         print(f"HOST:{platform.node()} | R:{self.rank}")
 
     def send_receive(self):
-        self.state = self.State(f"we da {self.rank} muzikj")
+        self.state = self.State(f"we da rank {self.rank}")
         self.states = self.comm.gather(self.state, root=0)
 
         print(self.states)
 
-    def spawn_population(self, indentifier, start_position):
-        self.indentifier = indentifier
+    def spawn_population(self, identifier, start_position):
+        self.identifier = identifier
         self.pop = Population(start_position)
 
 
