@@ -8,15 +8,18 @@ class Population:
     class Member:
         def __init__(self):
             self.directions = ["U", "D", "L", "R"]
+            self.DNA = []   # TODO
+            self.fitness = 0
 
-        def get_fitness(self):
+        def get_fitness(self, feedback):
             pass
 
-        def mutate(self):
+        def mutate(self, mutation_rate):
             pass
 
-    def __init__(self, spawn):
+    def __init__(self, spawn, pop_size=10, mutation_rate=0.1):
         self.spawn = spawn  # (x, y) tuple, np format
+        self.members = []   # TODO
 
     def batch_fitness(self):
         pass
